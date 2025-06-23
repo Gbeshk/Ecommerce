@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import Logo from "../../../public/images/logo.svg";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+  const router = useRouter();
   return (
     <>
       <div className="w-full bg-[#0E0E0E] h-[368px] p-1 pb-[24px] mt-[188px]">
@@ -17,16 +20,28 @@ export default function Footer() {
             alt="logo"
           ></Image>
           <div className="flex gap-8">
-            <p className="font-bold text-[13px] text-white cursor-pointer leading-[25px] tracking-[2px] uppercase hover:text-[#D87D4A] transition-colors duration-300 ease-in-out">
+            <p
+              onClick={() => router.push("/home")}
+              className="font-bold text-[13px] text-white cursor-pointer leading-[25px] tracking-[2px] uppercase hover:text-[#D87D4A] transition-colors duration-300 ease-in-out"
+            >
               Home
             </p>
-            <p className="font-bold text-[13px] leading-[25px] text-white cursor-pointer tracking-[2px] uppercase hover:text-[#D87D4A] transition-colors duration-300 ease-in-out">
+            <p
+              onClick={() => router.push("/category-headphones")}
+              className="font-bold text-[13px] leading-[25px] text-white cursor-pointer tracking-[2px] uppercase hover:text-[#D87D4A] transition-colors duration-300 ease-in-out"
+            >
               HEADPHONES
             </p>
-            <p className="font-bold text-[13px] leading-[25px] tracking-[2px] uppercase text-white cursor-pointer hover:text-[#D87D4A] transition-colors duration-300 ease-in-out">
+            <p
+              onClick={() => router.push("/category-speakers")}
+              className="font-bold text-[13px] leading-[25px] tracking-[2px] uppercase text-white cursor-pointer hover:text-[#D87D4A] transition-colors duration-300 ease-in-out"
+            >
               SPEAKERS
             </p>
-            <p className="font-bold text-[13px] leading-[25px] tracking-[2px] uppercase text-white cursor-pointer hover:text-[#D87D4A] transition-colors duration-300 ease-in-out">
+            <p
+              onClick={() => router.push("/category-earphones")}
+              className="font-bold text-[13px] leading-[25px] tracking-[2px] uppercase text-white cursor-pointer hover:text-[#D87D4A] transition-colors duration-300 ease-in-out"
+            >
               EARPHONES
             </p>
           </div>

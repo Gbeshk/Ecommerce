@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import { CartProvider } from "./components/CartProvider/CartProvider";
+import ClientLayoutWrapper from "./components/clientLayoutWrapper/ClientLayoutWrapper";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -23,9 +23,9 @@ export default function RootLayout({
       <body
         className={`${manrope.className} antialiased min-h-screen flex flex-col`}
       >
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <CartProvider>
+          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        </CartProvider>
       </body>
     </html>
   );

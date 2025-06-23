@@ -20,7 +20,7 @@ function Zx7Headphonoe() {
           ZX7 SPEAKER
         </p>
         <div
-          onClick={() => router.push("/details-speaker-1")}
+          onClick={() => router.push("/details-speaker-2")}
           className="w-[160px] h-[48px] border-[1.5px] border-black text-black bg-transparent hover:bg-black hover:text-white transition-all duration-500 ease-in-out cursor-pointer mt-[24px] flex items-center justify-center font-bold text-[13px] leading-[100%] tracking-[1px] uppercase"
         >
           See Product

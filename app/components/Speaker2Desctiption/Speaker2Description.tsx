@@ -3,17 +3,19 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import React, { useState } from "react";
 import HeadphonePreview1 from "../../../public/images/speaker1.jpg";
-
+import { useCart } from "../CartProvider/CartProvider";
 function Speaker2Description() {
   const router = useRouter();
   const [x, setX] = useState(1);
+  const { cartArray, setCartArray } = useCart();
+
   return (
     <>
       <div className="w-full">
         <div className="w-full max-w-[1110px] mx-auto">
           <p
             onClick={() => router.back()}
-            className="text-black opacity-50 font-normal text-[15px] leading-[25px] tracking-[0px] mt-[64px] hover:underline cursor-pointer "
+            className="text-black opacity-50 hover:text-[#D87D4A] transition-all duration-200 hover:opacity-100 w-[100px] font-normal text-[15px] leading-[25px] tracking-[0px] mt-[64px] hover:underline cursor-pointer "
           >
             Go Back
           </p>
@@ -62,7 +64,35 @@ function Speaker2Description() {
                   </p>
                 </div>
 
-                <div className="w-[160px] h-[48px] cursor-pointer bg-[#D87D4A] hover:bg-[#FBAF85] flex items-center justify-center font-bold text-[13px] leading-[100%] tracking-[1px] uppercase text-white transition-colors duration-500 ease-in-out">
+                <div
+                  onClick={() => {
+                    const newProduct = {
+                      name: "ZX7",
+                      price: "$3,500",
+                      priceInt: 3500,
+                      img: HeadphonePreview1,
+                      quantity: x,
+                    };
+
+                    setCartArray((prev) => {
+                      const existingCart = prev || [];
+
+                      const productIndex = existingCart.findIndex(
+                        (item) => item.name === newProduct.name
+                      );
+
+                      if (productIndex !== -1) {
+                        const updatedCart = [...existingCart];
+                        updatedCart[productIndex].quantity =
+                          newProduct.quantity;
+                        return updatedCart;
+                      } else {
+                        return [...existingCart, newProduct];
+                      }
+                    });
+                  }}
+                  className="w-[160px] h-[48px] cursor-pointer bg-[#D87D4A] hover:bg-[#FBAF85] flex items-center justify-center font-bold text-[13px] leading-[100%] tracking-[1px] uppercase text-white transition-colors duration-500 ease-in-out"
+                >
                   Add to cart
                 </div>
               </div>
